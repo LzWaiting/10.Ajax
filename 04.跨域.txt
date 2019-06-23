@@ -1,0 +1,43 @@
+跨域（Cross Domain）
+    1. 什么是跨域
+        HTTP协议中有一个策略-“同源策略”
+	同源：多个地址中，相同协议，相同域名，相同端口被视为是“同源”
+	    在HTTP中，必须是同源地址才能互相发送请求，非同源拒绝请求（<script>和<img>除外）
+	    et:
+	        http://www.tedu.cn/a.html
+	        http://www.tedu.cn/b.html
+	        1. 以上地址为“同源”
+	        http://www.tedu.cn/a/html
+	        https://www.tedu.cn/b.html
+	        2. 以上地址不“同源”，协议不同
+	        http://localhost/a.html
+	        http://127.0.0.1/b.html
+	        3. 域名不相同，不“同源”
+	        http://www.tedu.cn:80/a.html
+	        http://www.tedu.cn:8080/b.html
+	        4. 端口号不同，不“同源”
+	跨域：非同源的网页，相互发送请求的过程，就是跨域
+    2. 解决跨域相互发送请求的方案
+        通过 <script src=""> 向服务器资源发送请求
+	由服务器资源指定前端页面的那个方法来执行响应的数据
+	et:
+	    function flight(){
+	    }
+	    ...
+	    // 原生js跨域
+	    var body = document.getElementsByTagName("body")[0];
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "http://127.0.0.1:5000/flight_server?callback=flight";
+            body.append(script);
+    3. jquery 的跨域
+        jsonp -- json with padding
+	    $.ajax({
+	        url:"异步请求地址",
+		type:"get",       // 跨域只接收get请求
+		dataType:"jsonp"  // 指定为跨域访问
+		jsonp:"callback"  // 定义callback的参数名，以便获取callback传递过去的函数名
+		jsonpCallback:""  // 定义回调函数名
+	    });
+	    简易版
+	    $.ajax();

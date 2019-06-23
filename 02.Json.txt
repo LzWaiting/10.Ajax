@@ -1,0 +1,58 @@
+JSON
+    1. JSON 介绍
+        JSON：JavaScript Object Notation,JS对象的标记
+	在AJAX中，允许将复杂格式的响应数据 构建成 JSON的格式，再进行响应输出
+	作用：约束前后端交互数据格式
+    2. JSON 表现
+        1. JSON 表示单个对象
+	    1. 使用{} 表示单个对象
+	    2. 在{} 中使用key:value 的形式来表示属性（数据）
+	    3. Key必须要用“Key”引起来
+	    4. value 如果是字符串的话，也需要用“value”引起来
+	    et:
+	        var obj = {
+		"name":"王老师",
+		"age":30,
+		"gender":"Male"
+		}
+	2. JSON 表示一个数组
+	    1. 使用[]表示一个数组
+	    2. 数组中允许包含若干 JSON对象 或 字符串
+	        1. 使用JSON数组表示若干字符串
+		    var arr = ["王老师","30","Male"]
+		2. 使用JSON数组表示若干对象
+		    保存3个人的信息（name,age,gender）
+		    var arr = [
+		    {"name":"王老师","age":30,"gender":"男"},
+		    {"name":"王夫人","age":28,"gender":"女"}
+		    ]
+	3. 使用 jq 的 each() 迭代数组
+	    1. $arr.each();
+	        $arr:jQuery中的数组
+		语法：
+		    $arr.each(function(index,obj){
+		        // index:遍历出来的元素在$arr中的下标
+			// obj:遍历出来的元素对象
+		    });
+	    2. $.each(arr,function(index,obj){
+		// arr:js中的普通数组,具体某个数组
+		// index/obj：同上
+	    });
+    3. 后台处理JSON步骤
+        在后台查询出数据再转换为JSON格式的字符串，再响应给前端。到了前端后再将字符串转换为JS对象
+	1. 后台先获取数据
+	    1. 元组
+	    2. 列表
+	    3. 字典
+	2. 在后台将数据转换为符合JSON格式的字符串
+	3. 在后台将JSON格式的字符串进行响应
+	4. 在前端将JSON格式的字符串解析为JS对象
+    4. 在Python中的JSON处理
+        1. 元组，列表，字典，使用python中的json类就可以完成转换
+	    import json
+	    jsonStr = json.dumps(元组|列表|字典)
+	    return jsonStr
+    5. 在前端处理JSON
+        由于在服务器端响应回来的数据是String，有些时候有必要将响应回来的数据转换为JS对象或数组，便于遍历取值
+	    在JS中
+	        JSON对象 = JSON.parse(JSON字符串)

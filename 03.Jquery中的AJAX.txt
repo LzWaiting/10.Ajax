@@ -1,0 +1,48 @@
+Jquery AJAX
+    在jquery中提供了对原生的AJAX的封装
+    1. $obj.load(url,[data,callback])
+        作用：异步加载数据到 $obj元素中
+	参数：
+	    url:异步请求的地址
+	    data:传递给服务器端的参数（可选），可以传递 普通字符串（get方式）/JSON对象（post方式）
+	    callback:异步请求完成后要执行的操作（可选）
+	        回调函数
+		function(resText,statusText){
+		    // resText:响应数据
+		    // statusText:响应的状态文本
+		}
+    2. $.get(url,[data,callback,type])
+	作用：异步请求
+	参数：
+	    url:异步请求地址
+	    data:请求提交的数据
+	        可以是字符串，也可以是JSON
+	    callback：请求成功时的回调函数
+	        function(resText){
+		    // resText:表示响应回来的文本
+		}
+	    “type”:响应回来的数据的类型
+	        取值：
+		    1. html:响应回来的文本是html文本
+		    2. text:响应回来的文本是普通文本
+		    3. json:响应回来的数据是JSON对象
+    3. $.post 与 get 用法相同
+    4. $.ajax()
+        语法：$.ajax({请求参数的JSON对象});
+	参数对象中的属性：
+	    url:字符串，表示异步请求的地址
+	    type:字符串，表示请求方式，get/post
+	    data:传递到服务器端的参数，
+	        可以是字符串："key1=value1&key2=value2&..."
+		也可以是JSON对象:{"key1":"value1",key2:value2,...}
+	    dataType:字符串，响应回来的数据的格式
+	        "html"
+		"xml"
+		"text"
+		"script"
+		"json"
+		"jsonp":有关跨域的响应格式
+	    success:回调函数，请求和响应成功时回来执行的操作
+
+	    error:回调函数，请求和响应失败时回来执行的操作
+	    beforeSend:回调函数，发送ajax请求之前执行的操作，如果return false,则终止请求发送

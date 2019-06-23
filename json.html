@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script src="jquery-1.11.3.js"></script>
+ </head>
+ <body>
+  <button onclick="btnClick()">JSON</button>
+  <script>
+	function btnClick(){
+		var obj = {
+			"name":"王老师",
+			"age":30,
+			"gender":"male"
+		};
+		console.log(obj.name);
+		var arr1 = [
+		    {
+				"name":"王老师",
+				"age":35,
+				"gender":"男"},
+		    {
+				"name":"王夫人",
+				"age":28,
+				"gender":"女"}
+		];
+		var arr2 = [
+		    {
+				"name":"王老师",
+				"age":31,
+				"gender":"男"},
+		    {
+				"name":"王夫人",
+				"age":29,
+				"gender":"女"}
+		];
+		/*for(var i=0;i<arr.length;i++){
+	    	console.log(arr[i].name);
+		}*/
+		/*console.log($(arr));
+		$(arr).each(function(index,obj){
+			console.log(obj,index);
+		});*/
+		$.each(arr1,function(i,obj){
+			console.log(arr1,obj,i)
+		});
+	}
+  </script>
+ </body>
+</html>
